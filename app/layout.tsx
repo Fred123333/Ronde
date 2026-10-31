@@ -3,7 +3,7 @@ import { Outfit, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { MotionProvider } from "@/components/motion/MotionConfig";
 import { PageTransition } from "@/components/motion/PageTransition";
-import { AppShell } from "@/components/layout/Appshell";
+import { AppShell } from "@/components/layout/AppShell";
 
 const outfit = Outfit({
   subsets: ["latin"],

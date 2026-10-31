@@ -1,4 +1,4 @@
-import { TopBar } from "./Topbar";
+import { TopBar } from "./TopBar";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
