@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-canvas: #FAF8F5;
+  --color-surface: #FFFFFF;
+  --color-ink: #2A2724;
+  --color-ink-soft: #6B6560;
+  --color-ink-faint: #9A938C;
+  --color-line: #E7E1D9;
+
+  --color-petrol-50: #EAF2F4;
+  --color-petrol-100: #CFE1E5;
+  --color-petrol-400: #2E8296;
+  --color-petrol-500: #1A6E82;
+  --color-petrol-600: #0F5C6E;
+  --color-petrol-700: #0B4856;
+
+  --color-terra-50: #FBEDE9;
+  --color-terra-100: #F5D6CD;
+  --color-terra-500: #C4553B;
+  --color-terra-600: #A84630;
+
+  --color-sage-50: #EAF1EC;
+  --color-sage-500: #3E7C5A;
+  --color-sage-600: #2F6347;
+
+  --font-display: var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-work), system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgba(42, 39, 36, 0.05),
+    0 4px 12px rgba(42, 39, 36, 0.06);
+  --shadow-lifted: 0 2px 4px rgba(42, 39, 36, 0.06),
+    0 12px 28px rgba(42, 39, 36, 0.1);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --ease-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html,
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :focus-visible {
+    outline: 2px solid var(--color-petrol-600);
+    outline-offset: 2px;
+    border-radius: 8px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@utility skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #ede8e1;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.55),
+      transparent
+    );
+    animation: shimmer 1.4s ease infinite;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
